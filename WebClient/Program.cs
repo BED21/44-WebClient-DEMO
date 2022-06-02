@@ -31,11 +31,11 @@ using HttpClient client = new()
 };
 
 var postCode = await client.GetFromJsonAsync<PostalCode>("se/42676");
+//var postCode = await client.GetFromJsonAsync<PostalCode>("us/90210");
 
-Console.WriteLine();
-Console.WriteLine($"Postal code: {postCode.PostCode}");
-Console.WriteLine($"Country: {postCode.Country}");
-Console.WriteLine($"Country abbreviation: {postCode.CountryAbbreviation}");
+Console.WriteLine($"Postal code: {postCode?.PostCode}");
+Console.WriteLine($"Country: {postCode?.Country}");
+Console.WriteLine($"Country abbreviation: {postCode?.CountryAbbreviation}");
 foreach (var place in postCode.Places)
 {
     Console.WriteLine($"Place name: {place.PlaceName}");
